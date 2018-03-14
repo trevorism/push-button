@@ -8,8 +8,15 @@ $(function () {
 
         var json = JSON.stringify(email);
 
-        $.post( "api/button/result", json).done(function( data ) {
-            window.alert("Response:" + data);
+        $.ajax({
+            url: "api/button/result",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: json,
+            success: function( data ) {
+                window.alert("Response:" + data);
+            }
         });
     });
 
