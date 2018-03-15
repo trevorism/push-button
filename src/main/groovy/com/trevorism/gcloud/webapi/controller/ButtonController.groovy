@@ -1,7 +1,6 @@
 package com.trevorism.gcloud.webapi.controller
 
-import com.google.appengine.repackaged.com.google.gson.Gson
-import com.trevorism.gcloud.button.model.Button
+import com.google.gson.Gson
 import com.trevorism.gcloud.button.model.Mail
 import com.trevorism.http.async.AsyncHttpClient
 import com.trevorism.http.async.AsyncJsonHttpClient
