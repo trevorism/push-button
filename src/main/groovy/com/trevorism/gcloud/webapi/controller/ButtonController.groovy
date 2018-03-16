@@ -19,7 +19,6 @@ class ButtonController {
 
     private final ButtonService buttonService = new DefaultButtonService()
 
-
     @ApiOperation(value = "Create a new Button **Secure")
     @POST
     @Secure
@@ -43,6 +42,16 @@ class ButtonController {
     @Produces(MediaType.APPLICATION_JSON)
     List<Button> list(){
         buttonService.list()
+    }
+
+    @ApiOperation(value = "Update a Button **Secure")
+    @PUT
+    @Path("{name}")
+    @Secure
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    Button update(@PathParam("name") String name, Button button) {
+        buttonService.update(name, button)
     }
 
     @ApiOperation(value = "Delete a Button with the {name} **Secure")

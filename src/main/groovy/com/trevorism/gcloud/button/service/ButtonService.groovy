@@ -13,5 +13,7 @@ interface ButtonService {
 
     List<Button> list()
 
+    Button update(String name, Button button)
+
     Button delete(String name)
 }

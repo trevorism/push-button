@@ -11,23 +11,35 @@ class DefaultButtonService implements ButtonService{
 
     private final Repository<Button> repository = new PingingDatastoreRepository<>(Button)
 
+    @Override
     Button create(Button button){
         repository.create(button)
     }
 
+    @Override
     Button getByName(String name){
         repository.list().find{
             it.name == name
         }
     }
 
+    @Override
     List<Button> list(){
         return repository.list()
     }
 
+    @Override
+    Button update(String name, Button button){
+        Button retrieved = getByName(name)
+        if(retrieved)
+            return repository.update(retrieved.id, button)
+        return retrieved
+    }
+
+    @Override
     Button delete(String name){
         Button button = getByName(name)
-        repository.delete(button.id)
+        repository.delete(button?.id)
         return button
     }
 }
