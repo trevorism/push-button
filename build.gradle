@@ -47,6 +47,7 @@ dependencies {
     compile 'com.trevorism:secure-utils:1.0.0'
     compile 'com.trevorism:http-utils:1.0.0'
     compile 'com.trevorism:datastore-client:1.1.0'
+    compile 'com.trevorism:eventhub-client:1.2.0'
 
     compile 'io.swagger:swagger-jersey2-jaxrs:1.5.16'
     compile 'com.google.code.gson:gson:2.8.2'
