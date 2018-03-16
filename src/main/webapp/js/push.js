@@ -2,9 +2,9 @@ $(function () {
 
     $("#email").click(function () {
         var email = {};
-        email.subject = "TEST";
+        email.subject = "Push button";
         email.recipients = ["trevorvbrooks@gmail.com"];
-        email.body = "This is only a test";
+        email.body = "A push button was pressed";
 
         var button = {};
         button.name = "email";
