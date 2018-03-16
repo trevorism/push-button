@@ -6,10 +6,14 @@ $(function () {
         email.recipients = ["trevorvbrooks@gmail.com"];
         email.body = "This is only a test";
 
-        var json = JSON.stringify(email);
+        var button = {};
+        button.name = "email";
+        button.parameters = email;
+
+        var json = JSON.stringify(button);
 
         $.ajax({
-            url: "api/button/result",
+            url: "api/push/result",
             type: "POST",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
