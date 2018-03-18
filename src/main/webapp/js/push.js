@@ -26,8 +26,8 @@ $(function () {
 
     $("#vm").click(function () {
         var button = {};
-        button.name = "vm";
-        button.parameters = email;
+        button.name = "startvm";
+        button.parameters = {};
 
         var json = JSON.stringify(button);
 
