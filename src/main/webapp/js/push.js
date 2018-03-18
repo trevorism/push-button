@@ -2,8 +2,9 @@ $(function () {
 
     $("#vm").click(function () {
         var button = {};
-        button.name = "startvm";
+        button.name = "Start Jenkins";
         button.parameters = {};
+        button.topicName = "startvm";
 
         var json = JSON.stringify(button);
 
