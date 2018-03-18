@@ -18,10 +18,31 @@ $(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: json,
-            success: function( data ) {
-                window.alert("Response:" + data);
+            success: function() {
+                window.alert("Success");
             }
         });
     });
+
+    $("#vm").click(function () {
+        var button = {};
+        button.name = "vm";
+        button.parameters = email;
+
+        var json = JSON.stringify(button);
+
+        $.ajax({
+            url: "api/push/result",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: json,
+            success: function() {
+                window.alert("Success");
+            }
+        });
+    });
+
+
 
 });

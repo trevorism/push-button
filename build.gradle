@@ -70,6 +70,7 @@ acceptance {
 appengine {
     deploy {
         project = "trevorism-pushbutton"
+        version = "1"
         stopPreviousVersion = true
         promote = true
     }
