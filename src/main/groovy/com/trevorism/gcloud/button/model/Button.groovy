@@ -16,6 +16,9 @@ class Button {
     @ApiModelProperty(value = "A description of the button")
     String description
 
+    @ApiModelProperty(value = "The topic on which this button will send information")
+    String topicName
+
     @ApiModelProperty(value = "Parameters for the button")
     Map<String,Object> parameters = [:]
 

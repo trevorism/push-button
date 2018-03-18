@@ -22,7 +22,7 @@ class PushController {
     @Consumes(MediaType.APPLICATION_JSON)
     void invoke(Button button){
         EventProducer<Map> producer = new DefaultEventProducer<>()
-        producer.sendCorrelatedEvent(button.name, button.parameters, UUID.randomUUID().toString())
+        producer.sendCorrelatedEvent(button.topicName, button.parameters, UUID.randomUUID().toString())
 
     }
 
