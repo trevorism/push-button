@@ -1,6 +1,5 @@
 package com.trevorism.gcloud.webapi.controller
 
-import com.trevorism.event.DefaultEventProducer
 import com.trevorism.event.EventProducer
 import com.trevorism.event.PingingEventProducer
 import com.trevorism.gcloud.button.model.Button
