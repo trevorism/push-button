@@ -2,6 +2,7 @@ package com.trevorism.gcloud.webapi.controller
 
 import com.trevorism.event.DefaultEventProducer
 import com.trevorism.event.EventProducer
+import com.trevorism.event.PingingEventProducer
 import com.trevorism.gcloud.button.model.Button
 import io.swagger.annotations.Api
 
@@ -21,9 +22,8 @@ class PushController {
     @Path("result")
     @Consumes(MediaType.APPLICATION_JSON)
     void invoke(Button button){
-        EventProducer<Map> producer = new DefaultEventProducer<>()
-        producer.sendCorrelatedEvent(button.topicName, button.parameters, UUID.randomUUID().toString())
-
+        EventProducer<Map> producer = new PingingEventProducer<>()
+        producer.sendEvent(button.topicName, button.parameters, UUID.randomUUID().toString())
     }
 
 }
