@@ -15,9 +15,9 @@ import javax.ws.rs.core.Response
 @Api("Root Operations")
 @SwaggerDefinition(
         info = @Info(
-                description = "API",
+                description = "API for the pusb button app",
                 version = "1",
-                title = "API",
+                title = "Push Button API",
                 contact = @Contact(name = "Trevor Brooks", url = "http://www.trevorism.com")
         )
 )
@@ -35,7 +35,7 @@ class RootController {
     @ApiOperation(value = "Context root of the application")
     @GET
     String displayHelpLink(){
-        '<h1>API</h1><br/>Visit the help page at <a href="/api/help">/api/help'
+        '<h1>Push Button API</h1><br/>Visit the help page at <a href="/api/help">/api/help'
     }
 
     @ApiOperation(value = "Shows this help page")
