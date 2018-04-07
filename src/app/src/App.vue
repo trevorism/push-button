@@ -1,13 +1,22 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <h2>Trevorism Push Button</h2>
+
+    <HelloWorld></HelloWorld>
+    <Layout></Layout>
   </div>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld.vue'
+import Layout from './components/Layout.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    HelloWorld,
+    Layout
+  }
 }
 </script>
 

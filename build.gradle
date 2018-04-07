@@ -96,14 +96,17 @@ node {
 
 
 task buildApp(type: NpmTask) {
+    group = "npm"
     args = ['run', 'build']
 }
 
 task testApp(type: NpmTask) {
+    group = "npm"
     args = ['test']
 }
 
 task runApp(type: NpmTask) {
+    group = "npm"
     args = ['run','dev']
 }
 
