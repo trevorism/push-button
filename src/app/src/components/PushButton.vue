@@ -1,35 +1,39 @@
 <template>
-  <div v-on:click="invoke" class="button">
-    <h2>{{ buttonData.name }} {{counter}}</h2>
-    <h4>{{ buttonData.description }}</h4>
+  <div v-on:click.prevent="invoke" class="button">
+    <h4>{{ buttonData.name }}</h4>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+
 export default {
   name: 'Button',
   props: ['buttonData'],
   data () {
     return {
       name: 'Button',
-      description: 'I love laila!!',
-      counter: 0
+      disabled: false,
+      upHere: false
     }
   },
   methods: {
     invoke: function (event) {
-      var buttonToPost = {}
-      buttonToPost.name = this.buttonData.name
-      buttonToPost.parameters = {'red': 'green'}
-      buttonToPost.topicName = 'test'
+      if (this.disabled) {
+        console.log('The button is currently disabled.')
+        return
+      }
+      var buttonToPost = this.buttonData
+      this.disabled = true
 
       axios.post('api/push/result', buttonToPost)
-        .then(function (response) {
+        .then((response) => {
           console.log(response)
+          this.disabled = false
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error)
+          this.disabled = false
         })
     }
   }
@@ -40,5 +44,8 @@ export default {
 <style scoped>
   .button {
     border: 1px solid black;
+    border-radius: 25px;
+    background: #69adac;
+    padding: 10px;
   }
 </style>

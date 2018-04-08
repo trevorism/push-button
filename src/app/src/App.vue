@@ -1,19 +1,16 @@
 <template>
   <div id="app">
-    <h2>Trevorism Push Button</h2>
-
+    <h2>Trevorism Push Buttons</h2>
     <Layout></Layout>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Layout from './components/Layout.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     Layout
   }
 }

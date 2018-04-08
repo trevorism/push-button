@@ -1,7 +1,7 @@
 <template>
 
   <div v-if="!loaded">
-    Loading...
+    {{message}}
   </div>
   <div v-else-if="loaded">
     <grid-layout
@@ -11,7 +11,7 @@
       :is-draggable="false"
       :is-resizable="false"
       :is-mirrored="false"
-      :vertical-compact="false"
+      :vertical-compact="true"
       :use-css-transforms="true"
     >
 
@@ -45,7 +45,7 @@ function buildLayoutFromData (data) {
       'x': i * 2 % 10,
       'y': i / 5 * 5,
       'w': 2,
-      'h': 10,
+      'h': 30,
       'i': i.toString()
     }
     layoutSpec.push(column)
@@ -67,12 +67,16 @@ export default {
         this.layout = buildLayoutFromData(response.data)
         this.loaded = true
       })
+      .catch(() => {
+        this.message = 'Error loading push buttons. Please refresh.'
+      })
   },
   data () {
     return {
       data: [],
       layout: layout,
-      loaded: false
+      loaded: false,
+      message: 'Loading...'
     }
   }
 }
