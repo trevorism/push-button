@@ -2,7 +2,6 @@
   <div id="app">
     <h2>Trevorism Push Button</h2>
 
-    <HelloWorld></HelloWorld>
     <Layout></Layout>
   </div>
 </template>
