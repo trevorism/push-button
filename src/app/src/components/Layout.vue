@@ -8,10 +8,10 @@
       :layout="layout"
       :col-num="12"
       :row-height="30"
-      :is-draggable="true"
+      :is-draggable="false"
       :is-resizable="false"
       :is-mirrored="false"
-      :vertical-compact="true"
+      :vertical-compact="false"
       :use-css-transforms="true"
     >
 
@@ -20,7 +20,8 @@
                  :y="item.y"
                  :w="item.w"
                  :h="item.h"
-                 :i="item.i">
+                 :i="item.i"
+                 :key="item.i">
 
         <PushButton :buttonData="data[item.i]"></PushButton>
       </grid-item>
@@ -30,7 +31,7 @@
 
 <script>
 import VueGridLayout from 'vue-grid-layout'
-import PushButton from './Button.vue'
+import PushButton from './PushButton.vue'
 import axios from 'axios'
 
 var GridLayout = VueGridLayout.GridLayout
@@ -44,7 +45,7 @@ function buildLayoutFromData (data) {
       'x': i * 2 % 10,
       'y': i / 5 * 5,
       'w': 2,
-      'h': 5,
+      'h': 10,
       'i': i.toString()
     }
     layoutSpec.push(column)

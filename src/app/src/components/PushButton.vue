@@ -1,11 +1,12 @@
 <template>
-  <div v-on:click="greet" class="button">
+  <div v-on:click="invoke" class="button">
     <h2>{{ buttonData.name }} {{counter}}</h2>
     <h4>{{ buttonData.description }}</h4>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Button',
   props: ['buttonData'],
@@ -17,14 +18,21 @@ export default {
     }
   },
   methods: {
-    greet: function (event) {
-      // `this` inside methods points to the Vue instance
-      alert('Hello ' + this.name + '!')
-      // `event` is the native DOM event
-      if (event) {
-        alert(event.target.tagName)
-      }
+    invoke: function (event) {
+      var buttonToPost = {}
+      buttonToPost.name = this.buttonData.name
+      buttonToPost.parameters = {'red': 'green'}
+      buttonToPost.topicName = 'test'
+
+      axios.post('api/push/result', buttonToPost)
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
+  }
 }
 </script>
 

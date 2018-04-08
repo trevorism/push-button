@@ -17,9 +17,8 @@ export default {
       pong: ''
     }
   },
-  mounted() {
-    axios.get('/api/button')
-    .then(response => {
+  mounted () {
+    axios.get('/api/button').then(response => {
       this.pong = response.data
     })
   },
