@@ -19,14 +19,15 @@ import java.util.logging.Logger
 class PushController {
 
     private static final Logger log = Logger.getLogger(PushController.class.name)
+    private EventProducer<Map> producer = new PingingEventProducer<>()
 
     @POST
     @Path("result")
     @Consumes(MediaType.APPLICATION_JSON)
     void invoke(Button button){
-        EventProducer<Map> producer = new PingingEventProducer<>()
+
         String correlationId = UUID.randomUUID().toString()
-        log.info("Pushed Button ${button.name} with correlationId: ${correlationId}")
+        log.info("Pushed button ${button.name} with correlationId: ${correlationId} to topic ${button.topicName}")
         producer.sendEvent(button.topicName, button.parameters, correlationId)
     }
 
