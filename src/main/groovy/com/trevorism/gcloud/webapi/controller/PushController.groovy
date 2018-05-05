@@ -9,6 +9,7 @@ import javax.ws.rs.Consumes
 import javax.ws.rs.POST
 import javax.ws.rs.Path
 import javax.ws.rs.core.MediaType
+import java.util.logging.Logger
 
 /**
  * @author tbrooks
@@ -17,12 +18,16 @@ import javax.ws.rs.core.MediaType
 @Path("/push")
 class PushController {
 
+    private static final Logger log = Logger.getLogger(PushController.class.name)
+
     @POST
     @Path("result")
     @Consumes(MediaType.APPLICATION_JSON)
     void invoke(Button button){
         EventProducer<Map> producer = new PingingEventProducer<>()
-        producer.sendEvent(button.topicName, button.parameters, UUID.randomUUID().toString())
+        String correlationId = UUID.randomUUID().toString()
+        log.info("Pushed Button ${button.name} with correlationId: ${correlationId}")
+        producer.sendEvent(button.topicName, button.parameters, correlationId)
     }
 
 }

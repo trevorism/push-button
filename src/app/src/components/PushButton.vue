@@ -13,14 +13,12 @@ export default {
   data () {
     return {
       name: 'Button',
-      disabled: false,
-      upHere: false
+      disabled: false
     }
   },
   methods: {
     invoke: function (event) {
       if (this.disabled) {
-        console.log('The button is currently disabled.')
         return
       }
       var buttonToPost = this.buttonData

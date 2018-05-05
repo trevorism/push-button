@@ -90,7 +90,7 @@ task deliver{
 node {
     version = '8.10.0'
     npmVersion = '5.8.0'
-    download = false
+    download = true
     nodeModulesDir = file("${project.projectDir}/src/app")
 }
 
