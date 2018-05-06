@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType
 @Path("/button")
 class ButtonController {
 
-    private final ButtonService buttonService = new DefaultButtonService()
+    private ButtonService buttonService = new DefaultButtonService()
 
     @ApiOperation(value = "Create a new Button **Secure")
     @POST
