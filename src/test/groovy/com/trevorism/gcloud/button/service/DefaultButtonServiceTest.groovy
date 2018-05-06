@@ -40,6 +40,16 @@ class DefaultButtonServiceTest {
     }
 
     @Test
+    void testUpdate() {
+        assert "test" == service.update("bar", new Button(name: "test")).name
+    }
+
+    @Test
+    void testUpdateWithMissingName() {
+        assert !service.update("bluegreen", new Button(name: "test"))
+    }
+
+    @Test
     void testDelete() {
         assert "foo" == service.delete("foo").name
     }
@@ -83,8 +93,8 @@ class DefaultButtonServiceTest {
             }
 
             @Override
-            Button update(String name, Button button, String s1) {
-                button.name = name
+            Button update(String id, Button button, String s1) {
+                button.id = id
                 return button
             }
 
