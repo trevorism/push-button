@@ -9,7 +9,7 @@ import com.trevorism.gcloud.button.model.Button
  */
 class DefaultButtonService implements ButtonService{
 
-    private final Repository<Button> repository = new PingingDatastoreRepository<>(Button)
+    private Repository<Button> repository = new PingingDatastoreRepository<>(Button)
 
     @Override
     Button create(Button button){

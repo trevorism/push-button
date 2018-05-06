@@ -10,10 +10,11 @@ import org.junit.Test
  */
 class ButtonControllerTest {
 
-    private ButtonController controller = new ButtonController()
+    private ButtonController controller
 
     @Before
     void setup(){
+        controller = new ButtonController()
         controller.buttonService = createMockService()
     }
 
