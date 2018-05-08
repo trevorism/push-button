@@ -1,11 +1,12 @@
 <template>
-  <div v-on:click.prevent="invoke" class="button">
+  <div v-on:click.prevent="invoke" v-bind:style="{ width: computedX }" class="button">
     <h4>{{ buttonData.name }}</h4>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import {TweenLite, TweenMax} from 'gsap'
 
 export default {
   name: 'Button',
@@ -13,24 +14,34 @@ export default {
   data () {
     return {
       name: 'Button',
-      disabled: false
+      disabled: false,
+      xaxis: '80%'
+    }
+  },
+  computed: {
+    computedX: function () {
+      return this.xaxis
     }
   },
   methods: {
     invoke: function (event) {
       if (this.disabled) {
+        console.log('The button is currently disabled.')
         return
       }
-      var buttonToPost = this.buttonData
+
+      let buttonToPost = this.buttonData
+      let myObj = this.$data
       this.disabled = true
+      TweenMax.to(myObj, 1, {xaxis: '90%', repeat: -1, yoyo: true})
 
       axios.post('api/push/result', buttonToPost)
-        .then((response) => {
-          console.log(response)
+        .then(() => {
+          TweenLite.to(myObj, 1, {xaxis: '80%'})
           this.disabled = false
         })
-        .catch((error) => {
-          console.log(error)
+        .catch(() => {
+          TweenLite.to(myObj, 1, {xaxis: '80%'})
           this.disabled = false
         })
     }
