@@ -8,6 +8,28 @@
 import axios from 'axios'
 import {TweenLite, TweenMax} from 'gsap'
 
+let buttonInvocation = function (event) {
+  if (this.disabled) {
+    console.log('The button is currently disabled.')
+    return
+  }
+
+  let buttonToPost = this.buttonData
+  let myObj = this.$data
+  this.disabled = true
+  TweenMax.to(myObj, 1, {xaxis: '90%', repeat: -1, yoyo: true})
+
+  axios.post('api/push/result', buttonToPost)
+    .then(() => {
+      TweenLite.to(myObj, 1, {xaxis: '80%'})
+      this.disabled = false
+    })
+    .catch(() => {
+      TweenLite.to(myObj, 1, {xaxis: '80%'})
+      this.disabled = false
+    })
+}
+
 export default {
   name: 'Button',
   props: ['buttonData'],
@@ -24,27 +46,7 @@ export default {
     }
   },
   methods: {
-    invoke: function (event) {
-      if (this.disabled) {
-        console.log('The button is currently disabled.')
-        return
-      }
-
-      let buttonToPost = this.buttonData
-      let myObj = this.$data
-      this.disabled = true
-      TweenMax.to(myObj, 1, {xaxis: '90%', repeat: -1, yoyo: true})
-
-      axios.post('api/push/result', buttonToPost)
-        .then(() => {
-          TweenLite.to(myObj, 1, {xaxis: '80%'})
-          this.disabled = false
-        })
-        .catch(() => {
-          TweenLite.to(myObj, 1, {xaxis: '80%'})
-          this.disabled = false
-        })
-    }
+    invoke: buttonInvocation
   }
 }
 </script>
@@ -56,5 +58,10 @@ export default {
     border-radius: 25px;
     background: #69adac;
     padding: 10px;
+    cursor:pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 </style>
