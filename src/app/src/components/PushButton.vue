@@ -1,9 +1,14 @@
 <template>
   <div>
     <b-field>
-      <button class="button is-primary is-medium" @click="buttonInvocation">
-        {{buttonData.name}}
-      </button>
+      <b-tooltip :label="buttonData.description"
+                 type="is-light">
+        <button class="button is-info is-large" @click="invoke">
+          {{buttonData.name}}
+        </button>
+      </b-tooltip>
+
+
     </b-field>
     <b-modal :active.sync="isModalActive">
       <ButtonForm :buttonData="buttonData"></ButtonForm>
@@ -66,18 +71,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
- <style scoped>
-  .button {
-    border: 1px solid black;
-    border-radius: 25px;
-    background: #69adac;
-    padding: 10px;
-    cursor:pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-</style>
