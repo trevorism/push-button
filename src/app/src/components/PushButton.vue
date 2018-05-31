@@ -4,10 +4,11 @@
       <b-tooltip :label="buttonData.description"
                  type="is-light">
         <button class="button is-info is-large" @click="invoke">
-          {{buttonData.name}}
+            {{buttonData.name}}
         </button>
-      </b-tooltip>
+        <b-loading :is-full-page="false" :active.sync="disabled" :can-cancel="false"></b-loading>
 
+      </b-tooltip>
 
     </b-field>
     <b-modal :active.sync="isModalActive">
@@ -18,7 +19,6 @@
 
 <script>
 import axios from 'axios'
-// import {TweenLite, TweenMax} from 'gsap'
 import ButtonForm from './ButtonForm.vue'
 
 let buttonInvocation = function (event) {
@@ -28,23 +28,19 @@ let buttonInvocation = function (event) {
   }
 
   let buttonToPost = this.buttonData
-
+  /*
   if (Object.keys(buttonToPost.parameters).length !== 0) {
     this.isModalActive = true
     return
   }
-
-  // let myObj = this.$data
+  */
   this.disabled = true
-  // TweenMax.to(myObj, 1, {xaxis: '90%', repeat: -1, yoyo: true})
 
   axios.post('api/push/result', buttonToPost)
     .then(() => {
-      // TweenLite.to(myObj, 1, {xaxis: '80%'})
       this.disabled = false
     })
     .catch(() => {
-      // TweenLite.to(myObj, 1, {xaxis: '80%'})
       this.disabled = false
     })
 }
