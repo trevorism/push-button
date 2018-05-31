@@ -1,12 +1,20 @@
 <template>
-  <div v-on:click.prevent="invoke" v-bind:style="{ width: computedX }" class="button">
-    <h4>{{ buttonData.name }}</h4>
+  <div>
+    <b-field>
+      <button class="button is-primary is-medium" @click="buttonInvocation">
+        {{buttonData.name}}
+      </button>
+    </b-field>
+    <b-modal :active.sync="isModalActive">
+      <ButtonForm :buttonData="buttonData"></ButtonForm>
+    </b-modal>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import {TweenLite, TweenMax} from 'gsap'
+// import {TweenLite, TweenMax} from 'gsap'
+import ButtonForm from './ButtonForm.vue'
 
 let buttonInvocation = function (event) {
   if (this.disabled) {
@@ -15,29 +23,37 @@ let buttonInvocation = function (event) {
   }
 
   let buttonToPost = this.buttonData
-  let myObj = this.$data
+
+  if (Object.keys(buttonToPost.parameters).length !== 0) {
+    this.isModalActive = true
+    return
+  }
+
+  // let myObj = this.$data
   this.disabled = true
-  TweenMax.to(myObj, 1, {xaxis: '90%', repeat: -1, yoyo: true})
+  // TweenMax.to(myObj, 1, {xaxis: '90%', repeat: -1, yoyo: true})
 
   axios.post('api/push/result', buttonToPost)
     .then(() => {
-      TweenLite.to(myObj, 1, {xaxis: '80%'})
+      // TweenLite.to(myObj, 1, {xaxis: '80%'})
       this.disabled = false
     })
     .catch(() => {
-      TweenLite.to(myObj, 1, {xaxis: '80%'})
+      // TweenLite.to(myObj, 1, {xaxis: '80%'})
       this.disabled = false
     })
 }
 
 export default {
   name: 'Button',
+  components: {ButtonForm},
   props: ['buttonData'],
   data () {
     return {
       name: 'Button',
       disabled: false,
-      xaxis: '80%'
+      showModal: false,
+      isModalActive: false
     }
   },
   computed: {
