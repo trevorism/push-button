@@ -30,13 +30,21 @@ class ButtonClient {
     }
 
     Button get(String name) {
-        String json = ResponseUtils.getEntity client.get("https://click.trevorism.com/api/button/${name}", ["Authorization": passwordProvider.password])
-        return gson.fromJson(json, Button)
+        try{
+            String json = ResponseUtils.getEntity client.get("https://click.trevorism.com/api/button/${name}", ["Authorization": passwordProvider.password])
+            return gson.fromJson(json, Button)
+        }catch (ignored){
+            return null
+        }
     }
 
     Button delete(String name) {
-        String json = ResponseUtils.getEntity client.delete("https://click.trevorism.com/api/button/${name}", ["Authorization": passwordProvider.password])
-        return gson.fromJson(json, Button)
+        try{
+            String json = ResponseUtils.getEntity client.delete("https://click.trevorism.com/api/button/${name}", ["Authorization": passwordProvider.password])
+            return gson.fromJson(json, Button)
+        }catch (ignored){
+            return null
+        }
     }
 
     Button update(String name, Button button) {
