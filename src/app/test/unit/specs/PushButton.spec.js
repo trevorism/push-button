@@ -14,8 +14,8 @@ describe('PushButton.vue', () => {
     expect(typeof PushButton.data).to.equal('function')
   })
 
-  it('has an invoke method', () => {
-    expect(typeof PushButton.methods.invoke).to.equal('function')
+  it('has a shouldSubmit method', () => {
+    expect(typeof PushButton.methods.shouldSubmit).to.equal('function')
   })
 
   it('does not have a created hook', () => {

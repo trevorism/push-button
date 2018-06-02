@@ -37,7 +37,6 @@ repositories {
 def appengineVersion = "1.9.63"
 def jerseyVersion = "2.27"
 
-
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.15'
 
