@@ -39,7 +39,6 @@ class DefaultButtonService implements ButtonService{
     @Override
     Button delete(String name){
         Button button = getByName(name)
-        repository.delete(button?.id)
-        return button
+        return repository.delete(button?.id)
     }
 }
