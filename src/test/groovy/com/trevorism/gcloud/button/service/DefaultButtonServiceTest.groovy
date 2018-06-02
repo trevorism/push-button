@@ -20,7 +20,7 @@ class DefaultButtonServiceTest {
 
     @Test
     void testCreate() {
-        Button button = new Button(name: "test", id: "15")
+        Button button = new Button(name: "test", id: "15", topicName: "unittest")
         Button created = service.create(button)
 
         assert created.id == "15"
@@ -48,12 +48,6 @@ class DefaultButtonServiceTest {
     void testUpdateWithMissingName() {
         assert !service.update("bluegreen", new Button(name: "test"))
     }
-
-    @Test
-    void testDelete() {
-        assert "foo" == service.delete("foo").name
-    }
-
 
     Repository<Button> createMockRepository() {
         return new Repository<Button>() {
