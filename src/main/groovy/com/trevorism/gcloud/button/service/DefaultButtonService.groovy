@@ -13,6 +13,7 @@ class DefaultButtonService implements ButtonService{
 
     @Override
     Button create(Button button){
+        validateButton(button)
         repository.create(button)
     }
 
@@ -40,5 +41,23 @@ class DefaultButtonService implements ButtonService{
     Button delete(String name){
         Button button = getByName(name)
         return repository.delete(button?.id)
+    }
+
+    private static void validateButton(Button button) {
+        if(!button.name)
+            throw new RuntimeException("Unable to create button without a name")
+
+        if(button.topicName == null)
+            throw new RuntimeException("Topic not specified")
+
+        if(button.topicName.length() < 3)
+            throw new RuntimeException("Topic must be at least 3 characters")
+
+        if(button.topicName.length() > 255)
+            throw new RuntimeException("Topic must be less than 256 characters")
+
+        if(button.topicName.startsWith("goog"))
+            throw new RuntimeException("Topic cannot start with 'goog'")
+
     }
 }

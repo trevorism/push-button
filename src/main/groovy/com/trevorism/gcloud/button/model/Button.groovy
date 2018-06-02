@@ -20,6 +20,6 @@ class Button {
     String topicName
 
     @ApiModelProperty(value = "Parameters for the button")
-    Map<String,Object> parameters = [:]
+    Map<String,String> parameters = [:]
 
 }
