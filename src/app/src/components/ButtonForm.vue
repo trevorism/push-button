@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import mixin from '../mixin/push'
+import mixin from '../mixins/push'
 
 export default {
   props: ['buttonData'],

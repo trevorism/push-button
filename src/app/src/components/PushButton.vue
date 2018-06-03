@@ -17,7 +17,7 @@
 
 <script>
 import ButtonForm from './ButtonForm.vue'
-import mixin from '../mixin/push'
+import mixin from '../mixins/push'
 
 export default {
   name: 'Button',
