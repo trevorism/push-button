@@ -8,6 +8,7 @@ import com.trevorism.secure.PasswordProvider
 import gherkin.deps.com.google.gson.Gson
 import gherkin.deps.com.google.gson.GsonBuilder
 import gherkin.deps.com.google.gson.reflect.TypeToken
+import org.apache.http.client.methods.CloseableHttpResponse
 
 /**
  * @author tbrooks
@@ -17,6 +18,11 @@ class ButtonClient {
     HeadersHttpClient client = new HeadersJsonHttpClient()
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").create()
     PasswordProvider passwordProvider = new PasswordProvider()
+
+    CloseableHttpResponse invoke(Button button) {
+        String json = gson.toJson(button)
+        client.post("https://click.trevorism.com/api/push/result", json, [:])
+    }
 
     Button store(Button button) {
         String json = gson.toJson(button)

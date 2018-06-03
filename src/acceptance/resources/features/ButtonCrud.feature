@@ -1,5 +1,5 @@
 Feature: Crud on a button
-  I can perform CRUD and List on an arbitrary object
+  One can perform CRUD and List on an arbitrary object
 
   Scenario: Create a test button
     Given the application is alive
