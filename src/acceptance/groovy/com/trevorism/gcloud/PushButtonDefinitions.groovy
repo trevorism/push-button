@@ -19,8 +19,8 @@ When(~/^a valid button is invoked$/) { ->
     Button button = new Button(name: "acceptanceTest", topicName: "testPushButton", description: "Used just for acceptance tests")
     success = buttonClient.invoke(button)
 }
-Then(~/^a successful response is returned$/) { ->
 
+Then(~/^a successful response is returned$/) { ->
     assert success.getStatusLine().statusCode == 204
     ResponseUtils.closeSilently success
 }
