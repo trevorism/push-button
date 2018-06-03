@@ -35,4 +35,11 @@ describe('PushButton.vue', () => {
     expect(pushButton.shouldSubmit()).to.equal(false)
     expect(pushButton.isModalActive).to.equal(true)
   })
+
+  it('createPostObject returns buttonData', () => {
+    const Constructor = Vue.extend(PushButton)
+    const button = {name: 'test1', parameters: {}}
+    const pushButton = new Constructor({ propsData: {buttonData: button} }).$mount()
+    expect(pushButton.createPostObject()).to.equal(button)
+  })
 })

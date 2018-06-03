@@ -19,4 +19,11 @@ describe('ButtonForm.vue', () => {
     const buttonForm = new Constructor({propsData: {buttonData: button}}).$mount()
     expect(buttonForm.formElements).to.equal(button.parameters)
   })
+
+  it('createPostObject returns buttonData', () => {
+    const Constructor = Vue.extend(ButtonForm)
+    const button = {name: 'test1', parameters: {key: 'value'}}
+    const buttonForm = new Constructor({ propsData: {buttonData: button} }).$mount()
+    expect(buttonForm.createPostObject()).to.equal(button)
+  })
 })
