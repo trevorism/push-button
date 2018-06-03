@@ -1,24 +1,38 @@
 import Vue from 'vue'
+import Buefy from 'buefy'
 import PushButton from '@/components/PushButton'
 
 describe('PushButton.vue', () => {
+  Vue.use(Buefy)
   it('renders its name', () => {
     const Constructor = Vue.extend(PushButton)
     const button = {name: 'test1'}
-    const vm = new Constructor({ propsData: {buttonData: button} }).$mount()
-    expect(vm.$el.textContent).to.contains('test1')
-    expect(vm.disabled).to.equal(false)
+    const pushButton = new Constructor({ propsData: {buttonData: button} }).$mount()
+    expect(pushButton.$el.textContent).to.contains('test1')
+    expect(pushButton.disabled).to.equal(false)
   })
 
-  it('has a data function', () => {
-    expect(typeof PushButton.data).to.equal('function')
+  it('shouldSubmit returns true when no parameters exist', () => {
+    const Constructor = Vue.extend(PushButton)
+    const button = {name: 'test1'}
+    const pushButton = new Constructor({ propsData: {buttonData: button} }).$mount()
+    expect(pushButton.shouldSubmit()).to.equal(true)
+    expect(pushButton.isModalActive).to.equal(false)
   })
 
-  it('has a shouldSubmit method', () => {
-    expect(typeof PushButton.methods.shouldSubmit).to.equal('function')
+  it('shouldSubmit returns true with empty parameters', () => {
+    const Constructor = Vue.extend(PushButton)
+    const button = {name: 'test1', parameters: {}}
+    const pushButton = new Constructor({ propsData: {buttonData: button} }).$mount()
+    expect(pushButton.shouldSubmit()).to.equal(true)
+    expect(pushButton.isModalActive).to.equal(false)
   })
 
-  it('does not have a created hook', () => {
-    expect(typeof PushButton.created).to.equal('undefined')
+  it('shouldSubmit returns false with a parameters', () => {
+    const Constructor = Vue.extend(PushButton)
+    const button = {name: 'test1', parameters: {'key': 'value'}}
+    const pushButton = new Constructor({ propsData: {buttonData: button} }).$mount()
+    expect(pushButton.shouldSubmit()).to.equal(false)
+    expect(pushButton.isModalActive).to.equal(true)
   })
 })

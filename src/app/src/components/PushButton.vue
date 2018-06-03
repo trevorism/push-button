@@ -26,15 +26,13 @@ export default {
   mixins: [mixin],
   data () {
     return {
-      name: 'Button',
       disabled: false,
-      showModal: false,
       isModalActive: false
     }
   },
   methods: {
     shouldSubmit: function () {
-      if (Object.keys(this.buttonData.parameters).length !== 0) {
+      if (this.buttonData.parameters && Object.keys(this.buttonData.parameters).length !== 0) {
         this.isModalActive = true
         return false
       }
