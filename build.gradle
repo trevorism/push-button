@@ -26,6 +26,7 @@ plugins {
 apply plugin: 'com.google.cloud.tools.appengine'
 apply plugin: "com.trevorism.gradle.acceptance"
 apply plugin: "com.trevorism.gradle.gae.deploy"
+apply plugin: "com.trevorism.gradle.release"
 
 repositories {
     mavenCentral()
