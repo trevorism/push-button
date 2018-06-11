@@ -85,9 +85,10 @@ check {
     dependsOn('jacocoTestReport')
 }
 
-task deliver{
-    dependsOn("build", "appengineDeploy","acceptance")
+task deliver {
+    dependsOn("build","appengineDeploy", "acceptance")
     acceptance.mustRunAfter("appengineDeploy")
+    appengineDeploy.mustRunAfter("check")
 }
 
 node {
