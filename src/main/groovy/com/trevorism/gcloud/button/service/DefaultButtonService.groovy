@@ -26,7 +26,9 @@ class DefaultButtonService implements ButtonService{
 
     @Override
     List<Button> list(){
-        return repository.list()
+        return repository.list().sort {
+            it.name
+        }
     }
 
     @Override

@@ -40,7 +40,7 @@ export default {
   data () {
     return {
       data: [],
-      numberOfColumns: 4,
+      numberOfColumns: 3,
       loaded: false,
       message: 'Loading...'
     }

@@ -3,7 +3,7 @@
     <b-field>
       <b-tooltip :label="buttonData.description"
                  type="is-light">
-        <button class="button is-info is-large" @click="invokeButton" :disabled="disabled">
+        <button class="button is-info is-large pushButton" @click="invokeButton" :disabled="disabled">
             {{buttonData.name}}
         </button>
         <b-loading :is-full-page="false" :active.sync="disabled" :can-cancel="false"></b-loading>
@@ -41,3 +41,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .pushButton {
+    width: 200px;
+  }
+</style>
