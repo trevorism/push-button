@@ -6,3 +6,4 @@ classes/
 *.iml
 out/
 src/app/node_modules/
+secrets.properties
