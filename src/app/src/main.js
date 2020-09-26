@@ -4,9 +4,12 @@ import Vue from 'vue'
 import App from './App'
 
 import Buefy from 'buefy'
-import 'buefy/lib/buefy.css'
+import 'buefy/dist/buefy.css'
+import VueCookies from 'vue-cookies'
 
 Vue.use(Buefy)
+Vue.use(VueCookies)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

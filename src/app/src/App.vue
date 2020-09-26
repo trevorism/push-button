@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <section class="hero is-primary">
-      <div class="hero-body">
-        <h1 class="title">Trevorism Push Buttons</h1>
-      </div>
-    </section>
+    <header-bar/>
     <section class="section">
       <Layout></Layout>
     </section>
@@ -14,11 +10,13 @@
 
 <script>
 import Layout from './components/Layout.vue'
+import HeaderBar from '@trevorism/headerbar'
 
 export default {
   name: 'App',
   components: {
-    Layout
+    Layout,
+    HeaderBar
   }
 }
 </script>

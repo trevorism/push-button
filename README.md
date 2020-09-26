@@ -6,6 +6,8 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/trevorism/push-button)
 
 
-Web interface for executing trevorism commands
+Web interface for executing Trevorism commands
+
+Current version: 0.3.0
 
 Deployed at https://click.trevorism.com
