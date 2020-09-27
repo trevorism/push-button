@@ -34,7 +34,7 @@ export default {
         this.loaded = true
       })
       .catch(() => {
-        this.message = 'Error loading push buttons. Please refresh.'
+        this.message = 'Error loading push buttons. You must be logged in to view them.'
       })
   },
   data () {

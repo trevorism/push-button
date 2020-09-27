@@ -3,6 +3,7 @@ package com.trevorism.gcloud.webapi.controller
 import com.trevorism.gcloud.button.model.Button
 import com.trevorism.gcloud.button.service.ButtonService
 import com.trevorism.gcloud.button.service.DefaultButtonService
+import com.trevorism.secure.Roles
 import com.trevorism.secure.Secure
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
@@ -21,7 +22,7 @@ class ButtonController {
 
     @ApiOperation(value = "Create a new Button **Secure")
     @POST
-    @Secure
+    @Secure(Roles.SYSTEM)
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     Button create(Button button){
@@ -40,6 +41,7 @@ class ButtonController {
     @ApiOperation(value = "Get a list of all Buttons")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Secure(Roles.USER)
     List<Button> list(){
         buttonService.list()
     }
@@ -47,7 +49,7 @@ class ButtonController {
     @ApiOperation(value = "Update a Button **Secure")
     @PUT
     @Path("{name}")
-    @Secure
+    @Secure(Roles.SYSTEM)
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     Button update(@PathParam("name") String name, Button button) {

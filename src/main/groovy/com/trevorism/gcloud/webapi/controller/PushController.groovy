@@ -3,6 +3,8 @@ package com.trevorism.gcloud.webapi.controller
 import com.trevorism.event.EventProducer
 import com.trevorism.event.PingingEventProducer
 import com.trevorism.gcloud.button.model.Button
+import com.trevorism.secure.Roles
+import com.trevorism.secure.Secure
 import io.swagger.annotations.Api
 
 import javax.ws.rs.Consumes
@@ -24,6 +26,7 @@ class PushController {
     @POST
     @Path("result")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Secure(Roles.USER)
     void invoke(Button button){
 
         String correlationId = UUID.randomUUID().toString()
