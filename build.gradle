@@ -45,7 +45,7 @@ dependencies {
     implementation "org.glassfish.jersey.inject:jersey-hk2:$jerseyVersion"
     implementation 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.11.1'
 
-    implementation 'com.trevorism:secure-utils:3.2.0'
+    implementation 'com.trevorism:secure-utils:3.3.0'
     implementation 'com.trevorism:http-utils:1.0.2'
     implementation 'com.trevorism:datastore-client:2.0.0'
     implementation 'com.trevorism:eventhub-client:2.0.0'
