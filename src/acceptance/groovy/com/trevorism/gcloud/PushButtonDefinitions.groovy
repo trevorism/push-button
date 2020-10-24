@@ -12,8 +12,8 @@ this.metaClass.mixin(cucumber.api.groovy.Hooks)
 this.metaClass.mixin(cucumber.api.groovy.EN)
 
 ButtonClient buttonClient = new ButtonClient()
-CloseableHttpResponse success
-CloseableHttpResponse failure
+String success
+String failure
 
 When(~/^a valid button is invoked$/) { ->
     Button button = new Button(name: "acceptanceTest", topicName: "testPushButton", description: "Used just for acceptance tests")
@@ -21,8 +21,8 @@ When(~/^a valid button is invoked$/) { ->
 }
 
 Then(~/^a successful response is returned$/) { ->
-    assert success.getStatusLine().statusCode == 204
-    ResponseUtils.closeSilently success
+    assert success
+    assert success.startsWith("{")
 }
 
 When(~/^an invalid button is invoked$/) { ->
@@ -30,6 +30,6 @@ When(~/^an invalid button is invoked$/) { ->
     failure = buttonClient.invoke(button)
 }
 Then(~/^a failure response is returned$/) { ->
-    assert failure.getStatusLine().statusCode == 500
-    ResponseUtils.closeSilently failure
+    assert failure
+    assert failure.startsWith("<")
 }

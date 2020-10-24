@@ -8,6 +8,6 @@
 
 Web interface for executing Trevorism commands
 
-Current version: 0.3.0
+Current version: 0.4.0
 
 Deployed at https://click.trevorism.com

@@ -62,7 +62,7 @@ dependencies {
 appengine {
     deploy {
         projectId = "trevorism-pushbutton"
-        version = "0-3-0"
+        version = "0-4-0"
         stopPreviousVersion = true
         promote = true
     }
@@ -76,6 +76,15 @@ task deliver {
     dependsOn("build","appengineDeploy", "acceptance")
     acceptance.mustRunAfter("appengineDeploy")
     appengineDeploy.mustRunAfter("check")
+}
+
+processResources{
+    doLast{
+        copy{
+            from "${System.getProperty("user.home")}/${project.name}/secrets.properties"
+            into "build/resources/main"
+        }
+    }
 }
 
 node {
