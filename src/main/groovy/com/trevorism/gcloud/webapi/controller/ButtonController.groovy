@@ -29,16 +29,17 @@ class ButtonController {
         buttonService.create(button)
     }
 
-    @ApiOperation(value = "View a Button with the {name}")
+    @ApiOperation(value = "View a Button with the {name} **Secure")
     @GET
     @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Secure(Roles.USER)
     Button getByName(@PathParam("name") String name){
         buttonService.getByName(name)
     }
 
-    @ApiOperation(value = "Get a list of all Buttons")
+    @ApiOperation(value = "Get a list of all Buttons **Secure")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Secure(Roles.USER)
