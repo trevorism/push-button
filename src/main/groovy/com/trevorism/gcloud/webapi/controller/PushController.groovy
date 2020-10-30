@@ -4,10 +4,9 @@ import com.trevorism.event.EventProducer
 import com.trevorism.event.PingingEventProducer
 import com.trevorism.gcloud.button.model.Button
 import com.trevorism.https.SecureHttpClientBase
-import com.trevorism.https.token.ObtainTokenFromCookie
+import com.trevorism.https.token.ObtainTokenFromBearerValidators
 import com.trevorism.secure.Roles
 import com.trevorism.secure.Secure
-import com.trevorism.secure.validator.Validators
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 
@@ -43,7 +42,7 @@ class PushController {
         String correlationId = UUID.randomUUID().toString()
         log.info("Pushing button ${button.name} with correlationId: ${correlationId} to topic ${button.topicName}")
         if(!producer)
-            producer = new PingingEventProducer<>(new SecureHttpClientBase(new ObtainTokenFromCookie(context)))
+            producer = new PingingEventProducer<>(new SecureHttpClientBase(new ObtainTokenFromBearerValidators(context)))
         producer.sendEvent(button.topicName, button.parameters, correlationId)
     }
 
