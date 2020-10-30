@@ -28,8 +28,11 @@ class PushController {
 
     private static final Logger log = Logger.getLogger(PushController.class.name)
 
+    private EventProducer<Map> producer
+
     @Context
     ContainerRequestContext context
+
 
     @ApiOperation(value = "Invoke a button **Secure")
     @POST
@@ -39,7 +42,8 @@ class PushController {
     void invoke(Button button){
         String correlationId = UUID.randomUUID().toString()
         log.info("Pushing button ${button.name} with correlationId: ${correlationId} to topic ${button.topicName}")
-        EventProducer<Map> producer = new PingingEventProducer<>(new SecureHttpClientBase(new ObtainTokenFromCookie()))
+        if(!producer)
+            producer = new PingingEventProducer<>(new SecureHttpClientBase(new ObtainTokenFromCookie(context)))
         producer.sendEvent(button.topicName, button.parameters, correlationId)
     }
 
