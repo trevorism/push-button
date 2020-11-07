@@ -13,7 +13,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "@trevorism/headerbar": "^0.5.1",
+    "@trevorism/headerbar": "^0.6.1",
     "axios": "^0.18.1",
     "buefy": "^0.9.3",
     "gsap": "^1.20.6",

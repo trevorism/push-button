@@ -32,7 +32,6 @@ class PushController {
     @Context
     ContainerRequestContext context
 
-
     @ApiOperation(value = "Invoke a button **Secure")
     @POST
     @Path("result")
@@ -41,9 +40,9 @@ class PushController {
     void invoke(Button button){
         String correlationId = UUID.randomUUID().toString()
         log.info("Pushing button ${button.name} with correlationId: ${correlationId} to topic ${button.topicName}")
-        if(!producer)
-            producer = new PingingEventProducer<>(new SecureHttpClientBase(new ObtainTokenFromBearerValidators(context)))
         producer.sendEvent(button.topicName, button.parameters, correlationId)
+        if(!producer)
+            producer = new PingingEventProducer<>(new SecureHttpClientBase(new ObtainTokenFromBearerValidators()))
     }
 
 }
