@@ -41,7 +41,7 @@ class PushController {
         String correlationId = UUID.randomUUID().toString()
         log.info("Pushing button ${button.name} with correlationId: ${correlationId} to topic ${button.topicName}")
         if(!producer)
-            producer = new PingingEventProducer<>(new SecureHttpClientBase(new ObtainTokenFromBearerValidators()))
+            producer = new PingingEventProducer<>(new SecureHttpClientBase(new ObtainTokenFromBearerValidators(context)))
 
         producer.sendEvent(button.topicName, button.parameters, correlationId)
     }

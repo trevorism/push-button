@@ -20,7 +20,6 @@ class ButtonClient {
     SecureHttpClient client = new DefaultSecureHttpClient()
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").create()
 
-
     String invoke(Button button) {
         try{
             String json = gson.toJson(button)
