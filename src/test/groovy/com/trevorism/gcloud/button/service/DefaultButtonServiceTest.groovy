@@ -1,6 +1,9 @@
 package com.trevorism.gcloud.button.service
 
 import com.trevorism.data.Repository
+import com.trevorism.data.model.filtering.ComplexFilter
+import com.trevorism.data.model.paging.PageRequest
+import com.trevorism.data.model.sorting.ComplexSort
 import com.trevorism.gcloud.button.model.Button
 import org.junit.Before
 import org.junit.Test
@@ -105,6 +108,21 @@ class DefaultButtonServiceTest {
             @Override
             void ping() {
 
+            }
+
+            @Override
+            List<Button> filter(ComplexFilter complexFilter) {
+                return null
+            }
+
+            @Override
+            List<Button> page(PageRequest pageRequest) {
+                return null
+            }
+
+            @Override
+            List<Button> sort(ComplexSort complexSort) {
+                return null
             }
         }
     }

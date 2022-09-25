@@ -1,6 +1,5 @@
 # push-button 
-![Jenkins](https://img.shields.io/jenkins/build/http/trevorism-build.eastus.cloudapp.azure.com/push-button)
-![Jenkins Coverage](https://img.shields.io/jenkins/coverage/jacoco/http/trevorism-build.eastus.cloudapp.azure.com/push-button)
+![Build](https://github.com/trevorism/push-button/actions/workflows/build.yml/badge.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/trevorism/push-button)
 ![GitHub language count](https://img.shields.io/github/languages/count/trevorism/push-button)
 ![GitHub top language](https://img.shields.io/github/languages/top/trevorism/push-button)
@@ -8,6 +7,6 @@
 
 Web interface for executing Trevorism commands
 
-Current version: 0.5.0
+Current [Version](https://github.com/trevorism/push-button/releases/latest)
 
 Deployed at https://click.trevorism.com
