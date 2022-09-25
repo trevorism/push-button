@@ -37,6 +37,15 @@ jobs:
         with:
           arguments: clean build appengineStage
 
+      - name: Create secrets file
+        uses: Amadevus/pwsh-script@v2
+        id: script
+        with:
+          script: |
+            Add-Content -Path .\build\staged-app\WEB-INF\classes\secrets.properties -Value 'clientId=${{ secrets.CLIENT_ID }}'
+            Add-Content -Path .\build\staged-app\WEB-INF\classes\secrets.properties -Value 'clientSecret=${{ secrets.CLIENT_SECRET }}'
+            Add-Content -Path .\build\staged-app\WEB-INF\classes\secrets.properties -Value 'signingKey=${{ secrets.SIGNING_KEY }}'
+
       - name: 'Deploy to App Engine'
         uses: 'google-github-actions/deploy-appengine@v0'
         with:
