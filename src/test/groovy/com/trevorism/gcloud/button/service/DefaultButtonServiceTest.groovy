@@ -13,11 +13,10 @@ import org.junit.Test
  */
 class DefaultButtonServiceTest {
 
-    private ButtonService service
+    private ButtonService service = new DefaultButtonService()
 
     @Before
     void setup(){
-        service = new DefaultButtonService()
         service.repository = createMockRepository()
     }
 
