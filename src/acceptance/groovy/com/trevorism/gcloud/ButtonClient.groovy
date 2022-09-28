@@ -1,16 +1,11 @@
 package com.trevorism.gcloud
 
 import com.trevorism.gcloud.button.model.Button
-import com.trevorism.http.headers.HeadersHttpClient
-import com.trevorism.http.headers.HeadersJsonHttpClient
-import com.trevorism.http.util.ResponseUtils
 import com.trevorism.https.DefaultSecureHttpClient
 import com.trevorism.https.SecureHttpClient
-import com.trevorism.secure.PasswordProvider
 import gherkin.deps.com.google.gson.Gson
 import gherkin.deps.com.google.gson.GsonBuilder
 import gherkin.deps.com.google.gson.reflect.TypeToken
-import org.apache.http.client.methods.CloseableHttpResponse
 
 /**
  * @author tbrooks

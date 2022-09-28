@@ -16,7 +16,7 @@ Given(~/^the application is alive$/) { ->
     }
     catch (Exception ignored){
         Thread.sleep(10000)
-        new URL("http://click.trevorism.com/api/ping").text
+        new URL("https://click.trevorism.com/api/ping").text
     }
 }
 
