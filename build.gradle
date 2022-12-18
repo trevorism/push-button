@@ -37,14 +37,6 @@ repositories {
         url uri("https://maven.pkg.github.com/trevorism/secure-http-utils")
         credentials creds
     }
-    maven {
-        url uri("https://maven.pkg.github.com/trevorism/datastore-client")
-        credentials creds
-    }
-    maven {
-        url uri("https://maven.pkg.github.com/trevorism/eventhub-client")
-        credentials creds
-    }
 }
 
 def jerseyVersion = "2.37"
